@@ -18,7 +18,7 @@ function CheckFullPartTime() {
   const wagePerHour = 20;
   let empHrs;
   let dailyWage;
-  
+
   switch (empCheck) {
     case isFullTime:
       empHrs = 8;
@@ -44,12 +44,40 @@ function CheckFullPartTime() {
       console.log("UC2- Employee is absent and his salary is: " + dailyWage);
       break;
 
-   
-  }
-  let WorkHrs=0;
-  GetWorkHrs(empHrs)
+      }
+  
+let WorkHrs=0;
+GetWorkHrs(empHrs)
   
 function GetWorkHrs(a){
     WorkHrs+=a
 }
-console.log("WorkHrs= "+WorkHrs)
+console.log("UC-3 WorkHrs= "+WorkHrs)
+
+//-----------------------------------
+  let TotalWage=0;
+  let NumOfDays=20;
+  let Day=1;
+
+function GetEmpHrs() {
+    empCheck=CheckFullPartTime() 
+    switch (empCheck) {
+      case isFullTime:
+        empHrs = 8;
+        break;
+      case isPartTime:
+        empHrs = 4;
+        break;
+      default:
+        empHrs = 0;
+        break;
+    }
+    return empHrs;
+  }
+let Workhr=0;
+  while(Day<=NumOfDays){
+    Workhr+=GetEmpHrs()
+  Day++
+}
+TotalWage=(Workhr*wagePerHour)
+console.log("UC4-WorkHrs & TotalWage= "+Workhr+" and "+TotalWage)
