@@ -81,3 +81,20 @@ let Workhr=0;
 }
 TotalWage=(Workhr*wagePerHour)
 console.log("UC4-WorkHrs & TotalWage= "+Workhr+" and "+TotalWage)
+
+let MaxWorkHrs=160;
+let MaxWorkDays=20;
+Day=0;
+WorkHrs=0;
+let a=0;
+while(WorkHrs<=MaxWorkHrs && Day<MaxWorkDays){
+    a=GetEmpHrs()
+    WorkHrs+=a
+    Day++
+  if(Workhr>MaxWorkHrs){
+WorkHrs-=a;
+ break;
+  }
+}
+TotalWage=(Workhr*wagePerHour);
+console.log("UC5 Calculating Workhrs, Days and TotalWage for Max 20 days or 160 hrs condition= "+Workhr+","+Day+" and "+TotalWage)
