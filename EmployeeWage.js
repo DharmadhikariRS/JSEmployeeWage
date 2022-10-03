@@ -43,4 +43,13 @@ function CheckFullPartTime() {
       dailyWage = wagePerHour * empHrs;
       console.log("UC2- Employee is absent and his salary is: " + dailyWage);
       break;
+
+   
   }
+  let WorkHrs=0;
+  GetWorkHrs(empHrs)
+  
+function GetWorkHrs(a){
+    WorkHrs+=a
+}
+console.log("WorkHrs= "+WorkHrs)
