@@ -90,7 +90,8 @@ let MaxWorkDays=20;
 Day=0;
 WorkHr=0;
 let a=0;
-while(WorkHrs<=MaxWorkHrs && Day<MaxWorkDays){
+
+while(WorkHr<=MaxWorkHrs && Day<MaxWorkDays){
     a=GetEmpHrs()
     if(WorkHr>MaxWorkHrs){
       WorkHr-=a;
@@ -99,7 +100,6 @@ while(WorkHrs<=MaxWorkHrs && Day<MaxWorkDays){
     DailyWageArray.push(a*wagePerHour)
     WorkHr+=a
     Day++
-
 }
 TotalWage=(WorkHr*wagePerHour);
 console.log("UC5 TotalworkHrs= "+WorkHr+" "+ "Totaldays= "+Day+ " "+ "TotalWage= "+TotalWage)
@@ -156,5 +156,17 @@ function GetTotalWorkingdays(){
 DailyWageArray.filter(wage=> wage>0).forEach(GetTotalWorkingdays)
 console.log("UC7-g Total number of working days= "+workingdays)
 
-
-
+//--------------------------------------------
+//Printing days with daily wage
+let WageDayMap = new Map();
+console.log("UC8- DAY  DAILY WAGE")
+for(i=1;i<=20;i++){
+  WageDayMap.set(i,DailyWageArray[i-1])
+}
+for(const [keys,Values] of WageDayMap){
+  console.log("  Day= "+keys+" "+"DailyWage= "+Values)
+}
+totalWage=0;
+WageDayMap.forEach(value=> totalWage+=value)
+console.log("UC8->  Total wage by Map is: "+totalWage);
+//-------------------------------------------
