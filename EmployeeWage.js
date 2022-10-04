@@ -90,7 +90,8 @@ let MaxWorkDays=20;
 Day=0;
 WorkHr=0;
 let a=0;
-let WageHrMap = new Map();
+let WageHrMap = new Map()
+let empDailyObjArray=new Array()
 while(WorkHr<=MaxWorkHrs && Day<MaxWorkDays){
     a=GetEmpHrs()
     if(WorkHr>MaxWorkHrs){
@@ -101,6 +102,15 @@ while(WorkHr<=MaxWorkHrs && Day<MaxWorkDays){
     WorkHr+=a
     Day++
     WageHrMap.set(Day,a)
+
+    empDailyObjArray.push({
+      day: Day,
+      empHrs: a,
+      dailyWage: a * wagePerHour,
+      toString() {
+        return ("\nDay:" +this.day +" Daily Hrs: " +this.empHrs +" Daily Wage: " +this.dailyWage);
+      },
+    });
 }
 TotalWage=(WorkHr*wagePerHour);
 console.log("UC5 TotalworkHrs= "+WorkHr+" "+ "Totaldays= "+Day+ " "+ "TotalWage= "+TotalWage)
@@ -195,3 +205,8 @@ WageHrMap.forEach((values,keys)=>
   process.stdout.write(keys +" ")
 })
 //-----------------------------------------
+
+console.log(
+  "UC-10 Store day,hrs,wage in a object: ",
+  empDailyObjArray.toString()
+);
