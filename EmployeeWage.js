@@ -105,3 +105,56 @@ TotalWage=(WorkHr*wagePerHour);
 console.log("UC5 TotalworkHrs= "+WorkHr+" "+ "Totaldays= "+Day+ " "+ "TotalWage= "+TotalWage)
 //--------------------------------------------------------------------
 console.log("UC6-Daily Wages are: "+DailyWageArray.toString())
+
+//-----------------------------------------------------------
+
+totalWage = 0;
+function wageSum(element) {
+  totalWage += element;
+}
+DailyWageArray.forEach(wageSum);
+console.log("UC7-A total wage using for each: ", totalWage);
+function totalWageReduce(totalWage, dailywage) {
+  return totalWage + dailywage;
+}
+console.log("UC7-A total wage using reduce: ", DailyWageArray.reduce(totalWageReduce, 0)
+);
+//---------------
+let day = 0;
+function DailyWageMap(wage) {
+  day++;
+  return "day " + day + ":" + wage;
+}
+
+let WageMap = DailyWageArray.map(DailyWageMap);
+console.log("UC7-B Day along with Daily Wage: ", WageMap);
+
+//---------------
+function DailyWage160(wage) {
+  return wage.includes("160");
+}
+console.log(
+  "UC7-C Full time wage of 160 were earned using filter function: ",
+  WageMap.filter(DailyWage160)
+);
+//----------------------
+console.log(
+  "UC7-D First occurrence when Full Time Wage was earned: ",
+  WageMap.find((e) => e.includes("160"))
+);
+//-----------------------
+if(DailyWageArray.find(wage=>wage==80))
+console.log("UC7 -f  Part time wage exists")
+else{
+  console.log("UC7-f  Part time wage does not exists")
+}
+//----------------------
+let workingdays=0
+function GetTotalWorkingdays(){
+++workingdays
+}
+DailyWageArray.filter(wage=> wage>0).forEach(GetTotalWorkingdays)
+console.log("UC7-g Total number of working days= "+workingdays)
+
+
+
