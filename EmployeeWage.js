@@ -90,7 +90,7 @@ let MaxWorkDays=20;
 Day=0;
 WorkHr=0;
 let a=0;
-
+let WageHrMap = new Map();
 while(WorkHr<=MaxWorkHrs && Day<MaxWorkDays){
     a=GetEmpHrs()
     if(WorkHr>MaxWorkHrs){
@@ -100,6 +100,7 @@ while(WorkHr<=MaxWorkHrs && Day<MaxWorkDays){
     DailyWageArray.push(a*wagePerHour)
     WorkHr+=a
     Day++
+    WageHrMap.set(Day,a)
 }
 TotalWage=(WorkHr*wagePerHour);
 console.log("UC5 TotalworkHrs= "+WorkHr+" "+ "Totaldays= "+Day+ " "+ "TotalWage= "+TotalWage)
@@ -170,3 +171,27 @@ totalWage=0;
 WageDayMap.forEach(value=> totalWage+=value)
 console.log("UC8->  Total wage by Map is: "+totalWage);
 //-------------------------------------------
+WorkHr=0
+WageHrMap.forEach(value=> WorkHr+=value)
+
+console.log("UC9-A TotalWage and Total Working hrs By Map=  "+" TotalWage= "+ totalWage+" "+" TotalWorkHr= "+WorkHr);
+
+//---------------------------------------------------
+console.log("UC9-B finding Part working days, full working days and No working days : ")
+
+process.stdout.write("Part working days are: ")
+WageHrMap.forEach((values,keys)=>
+{if(values == 4 )
+  process.stdout.write(keys +" ")
+})
+process.stdout.write("\nfull working days are: ")
+WageHrMap.forEach((values,keys)=>
+{if(values == 8)
+  process.stdout.write(keys +" ")
+})
+process.stdout.write("\nNo working days are: ")
+WageHrMap.forEach((values,keys)=>
+{if(values == 0)
+  process.stdout.write(keys +" ")
+})
+//-----------------------------------------
