@@ -210,3 +210,33 @@ console.log(
   "UC-10 Store day,hrs,wage in a object: ",
   empDailyObjArray.toString()
 );
+
+//--------------------------
+function getTotalEmpWageForObj(TotalWageByOj, Obj)
+{
+  return TotalWageByOj+=Obj.dailyWage
+}
+console.log(
+  "\nUC-11A Total wage ",
+  empDailyObjArray.filter(e => e.dailyWage > 0).reduce(getTotalEmpWageForObj,0)
+);
+console.log(
+  "UC-11A Total hours are ",
+  empDailyObjArray.filter(e => e.dailyWage > 0).reduce((TotalHoursByobj, obj) => TotalHoursByobj+=obj.empHrs,0)
+);
+process.stdout.write(
+  "UC-11B full workings days are ")
+  empDailyObjArray.filter(e => e.dailyWage == 160).forEach(e => process.stdout.write(e.day.toString()+", "))
+;
+function getWorkingDaysforObject(obj)
+{
+ return obj.day
+}
+console.log(
+  "\nUC-11C part workings days are ",
+  empDailyObjArray.filter(e => e.dailyWage == 80).map(getWorkingDaysforObject).toString()
+);
+console.log(
+  "UC-11D No workings days are ",
+  empDailyObjArray.filter(e => e.dailyWage == 0).map(getWorkingDaysforObject).toString()
+);
