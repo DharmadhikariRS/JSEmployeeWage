@@ -1,33 +1,42 @@
 class EmployeePayroll {
-  constructor(id, name, salary) {
-    this.id = id;
-    this.name = name;
-    this.salary = salary;
+    constructor(...employeeData) {
+      this.id = employeeData[0];
+      this.name = employeeData[1];
+      this.salary = employeeData[2];
+      this.gender = employeeData[3];
+      this.date = employeeData[4]
+    }
+  
+    get name() {
+      return this._name;
+    }
+  
+    set name(name) {
+      this._name = name;
+    }
+  
+    toString() {
+      return (
+        "Employee Data " +
+        "Id: " +
+        this.id +
+        " Name: " +
+        this.name +
+        " Salary: " +
+        this.salary +
+        " Gender: " +
+        this.gender +
+        " Start Date: " +
+        this.date
+      );
+    }
   }
-
-  get name() {
-    return this._name;
-  }
-
-  set name(name) {
-    this._name = name;
-  }
-
-  toString() {
-    return (
-      "Employee Data " +
-      "Id: " +
-      this.id +
-      " Name: " +
-      this.name +
-      " Salary: " +
-      this.salary
-    );
-  }
-}
-
-let employee = new EmployeePayroll(1, "Rushi", 50000);
-console.log(employee);
-
-employee.name = "Krish";
-console.log(employee);
+  
+  let employeeOne = new EmployeePayroll(101, "Sachin", 1237469);
+  console.log(employeeOne.toString());
+  console.log()
+  employeeOne.name = "Yogu";
+  console.log(employeeOne.toString());
+    console.log()
+  let employeeSecond = new EmployeePayroll(105, "Yuvi", 12533,"M",new Date());
+  console.log(employeeSecond.toString());
